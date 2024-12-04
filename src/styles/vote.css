@@ -1,0 +1,80 @@
+.voting-card {
+  border: none;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+}
+
+.voting-card .image-wrapper {
+  overflow: hidden;
+  position: relative;
+}
+
+.voting-card .image-wrapper img {
+  width: 100%;
+  height: auto;
+  transition:
+    transform 0.3s ease-in-out,
+    box-shadow 0.3s ease-in-out;
+}
+
+.voting-card:hover .image-wrapper img {
+  transform: scale(1.1);
+  box-shadow: 0 4px 20px rgba(255, 105, 180, 0.6);
+}
+
+.voting-card:hover {
+  transform: scale(1.05);
+}
+
+.voting-card .card-title {
+  font-size: 1.2rem;
+  color: #000;
+}
+
+.voting-card .card-text {
+  font-size: 1rem;
+  color: #555;
+}
+
+.voting-header {
+  font-size: 2.5rem;
+  color: #343a40;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.voting-card .image-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0);
+  transition: background-color 0.3s ease-in-out;
+  z-index: 1;
+}
+
+.voting-card:hover .image-wrapper::before {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.voting-card .image-wrapper::after {
+  content: "Vote Now!";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  padding: 10px 20px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 2;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.voting-card:hover .image-wrapper::after {
+  opacity: 1;
+}

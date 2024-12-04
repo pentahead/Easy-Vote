@@ -9,6 +9,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { setToken, setUser } from "../redux/slices/auth"; // Import setUser action
 import { login } from "../service/auth";
 import { Container } from "react-bootstrap";
+import { pulse } from "react-animations";
+import styled, { keyframes } from "styled-components";
 
 export const Route = createLazyFileRoute("/login")({
   component: Login,
@@ -20,7 +22,7 @@ function Login() {
 
   const { token, user } = useSelector((state) => state.auth);
 
-  const [email, setEmail] = useState("");
+  const [nim, setNim] = useState("");
   const [password, setPassword] = useState("");
 
   useEffect(() => {
@@ -38,7 +40,7 @@ function Login() {
     event.preventDefault();
 
     const body = {
-      email,
+      nim,
       password,
     };
 
@@ -55,6 +57,11 @@ function Login() {
     }
   };
 
+  const PulseAnimation = keyframes`${pulse}`;
+  const AnimatedImage = styled.img`
+    animation: ${PulseAnimation} 2s infinite; /* 2s durasi animasi, infinite berarti terus berulang */
+  `;
+
   return (
     <section className="d-flex z-1 bg-light  justify-content-center align-items-center vh-100 bg-login position-relative overflow-hidden">
       <Container>
@@ -63,9 +70,9 @@ function Login() {
             md={6}
             lg={4}
             style={{
-              backdropFilter: "blur(10px)", // Gunakan camelCase untuk backdropFilter
-              backgroundColor: "rgba(255, 255, 255, 0.7)", // Gunakan camelCase untuk backgroundColor
-              borderRadius: "0.5rem", // Sesuaikan ukuran border-radius jika diperlukan
+              backdropFilter: "blur(10px)",
+              backgroundColor: "rgba(255, 255, 255, 0.7)",
+              borderRadius: "0.5rem",
             }}
             className="bg-trasnparent rounded-4 shadow-lg p-4 position-relative"
           >
@@ -75,12 +82,12 @@ function Login() {
 
             <Form onSubmit={onSubmit} className="z-3 p-5">
               <Form.Group className="mb-3">
-                <Form.Label>Email address</Form.Label>
+                <Form.Label>NIM</Form.Label>
                 <Form.Control
-                  type="email"
-                  placeholder="Enter email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  type="number"
+                  placeholder="Enter Nim"
+                  value={nim}
+                  onChange={(e) => setNim(e.target.value)}
                   required
                 />
               </Form.Group>
@@ -96,13 +103,22 @@ function Login() {
                 />
               </Form.Group>
 
-              <Button variant="dark" type="submit" className="w-100 mt-3">
+              <Button
+                variant=""
+                type="submit"
+                className="w-100 mt-3 fw-bold"
+                style={{ background: "#ef8f2e", color: "white" }}
+              >
                 Login
               </Button>
             </Form>
           </Col>
-          <div className="decoration position-absolute top-50 z-n1 start-100  translate-middle">
-            <img src="img/car.png" alt="Decoration" className="img-fluid" />
+          <div className="decoration position-absolute top-50 z-n1 start-100 translate-middle">
+            <AnimatedImage
+              src="img/box.png"
+              alt="Decoration"
+              className="img-fluid"
+            />
           </div>
         </Row>
       </Container>

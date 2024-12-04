@@ -54,7 +54,7 @@ const NavigationBar = () => {
 
   const handleBrandClick = () => {
     // Check user's role_id and redirect accordingly
-    if (user?.role_id === 1) { 
+    if (user?.role_id === 1) {
       navigate({ to: "/dashboard" });
     } else if (user?.role_id === 2) {
       navigate({ to: "/" });
@@ -93,16 +93,16 @@ const NavigationBar = () => {
               </Offcanvas.Header>
               <Offcanvas.Body>
                 <Nav className="justify-content-end flex-grow-1 pe-3 text-black">
-                  <Nav.Link as={Link} to="/#our-service">
+                  <Nav.Link as={Link} to="/candidate">
                     Candidates
                   </Nav.Link>
-                  <Nav.Link as={Link} to="/#why-us">
+                  <Nav.Link as={Link} to="/vote">
                     Votes
                   </Nav.Link>
-                  <Nav.Link as={Link} to="/#testimonial">
+                  <Nav.Link as={Link} to="/statistic">
                     Statistics
                   </Nav.Link>
-                  <Nav.Link as={Link} to="/#faq">
+                  <Nav.Link as={Link} to="/profile">
                     Profile
                   </Nav.Link>
                   {user ? (
