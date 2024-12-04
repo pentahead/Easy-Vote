@@ -76,7 +76,7 @@ const NavigationBar = () => {
             <Navbar.Brand
               as="div"
               onClick={handleBrandClick} // Handle click to navigate based on role
-              style={{ cursor: "pointer" }}
+              style={{ cursor: "pointer", fontWeight:"bold" }}
             >
               EasyVote
             </Navbar.Brand>
@@ -92,8 +92,8 @@ const NavigationBar = () => {
                 </Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
-                <Nav className="justify-content-end flex-grow-1 pe-3 text-black">
-                  <Nav.Link as={Link} to="/candidate">
+                <Nav className="justify-content-end flex-grow-1 pe-3 text-black fw-bold">
+                  <Nav.Link as={Link} to="/candidate" >
                     Candidates
                   </Nav.Link>
                   <Nav.Link as={Link} to="/vote">

@@ -60,7 +60,7 @@ const Votes = () => {
   ];
   return (
     <div className="Votes py-5">
-      <Container className="mt-5">
+      <Container>
         <Row className="justify-content-center mb-4 ">
           <Card className=" p-4 border-0" style={{ background: "#ef8f2e" }}>
             <h1 className="fw-bold voting-header text-center text-light">

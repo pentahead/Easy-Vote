@@ -4,6 +4,8 @@ import { RouterProvider, createRouter } from "@tanstack/react-router";
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
 import "bootstrap/dist/css/bootstrap.min.css"; // To apply the bootstrap styling
+import "./styles/app.css";
+
 
 // Import the generated route tree
 import { routeTree } from "./routeTree.gen";
