@@ -19,7 +19,25 @@ export const Route = createFileRoute("/profile")({
 });
 
 const Profile = () => {
-  return <div className="Profile"></div>;
+  return <div className="Profile ">
+
+
+  <div className="container" style={{ width: "100vh",height: "100vh",marginTop:"10vh", justifyContent: "center", display: "flex" }}>
+    <Card style={{ width: "50%", height: "50%", borderRadius: "20px", display: "flex", justifyContent: "center", alignItems: "center"  }}>
+      <h2>NAMA</h2>
+        <div style={{width: "90%", height: "15%", borderRadius: "20px", display: "flex", justifyContent: "center", alignItems: "center", alignContent: "center",border: "1px solid black", margin:"5%"}}>
+          <h3>
+            NUR BASHORI RAHMAT NUR 
+          </h3>  
+        </div>
+      <h2>NIM</h2>
+        <div style={{width: "90%", height: "15%", borderRadius: "20px", display: "flex", justifyContent: "center", alignItems: "center", alignContent: "center",border: "1px solid black", margin:"5%"}}>
+          <h3>KOntol</h3>
+        </div>
+    </Card>
+  </div>
+  </div>;
+  
 };
 
 function Index() {
