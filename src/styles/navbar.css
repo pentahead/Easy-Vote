@@ -1,0 +1,15 @@
+.custom-nav-link {
+  color: white; 
+  transition: color 0.3s ease; 
+  text-decoration: none;
+}
+
+.custom-nav-link:hover {
+  color: rgb(191, 102, 0); 
+}
+
+.custom-nav-link.active {
+  color: white !important; 
+  font-weight: bold; 
+  background-color: transparent; 
+}

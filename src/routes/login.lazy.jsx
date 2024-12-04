@@ -87,7 +87,12 @@ function Login() {
                   type="number"
                   placeholder="Enter Nim"
                   value={nim}
-                  onChange={(e) => setNim(e.target.value)}
+                  onChange={(e) => {
+                    const value = e.target.value;
+                      if (value >= 0) {
+                        setNim(value);
+                      }
+                  }}
                   required
                 />
               </Form.Group>

@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setToken, setUser } from "../../redux/slices/auth";
 import { profile } from "../../service/auth";
+import "../../styles/navbar.css";
 
 const NavigationBar = () => {
   const dispatch = useDispatch();
@@ -96,23 +97,24 @@ const NavigationBar = () => {
                   <Nav.Link
                     as={Link}
                     to="/candidate"
-                    style={{ color: "white" }}
+                    className="custom-nav-link"
                   >
                     Candidates
                   </Nav.Link>
-                  <Nav.Link as={Link} to="/vote" style={{ color: "white" }}>
+                  <Nav.Link as={Link} to="/vote" className="custom-nav-link">
                     Votes
                   </Nav.Link>
                   <Nav.Link
                     as={Link}
                     to="/statistic"
-                    style={{ color: "white" }}
+                    className="custom-nav-link"
                   >
                     Statistics
                   </Nav.Link>
-                  <Nav.Link as={Link} to="/profile" style={{ color: "white" }}>
+                  <Nav.Link as={Link} to="/profile" className="custom-nav-link">
                     Profile
                   </Nav.Link>
+
                   {user ? (
                     <>
                       {/* Profile Dropdown */}
@@ -158,7 +160,7 @@ const NavigationBar = () => {
                       <Nav.Link
                         as={Link}
                         to="/login"
-                        style={{ color: "white" }}
+                        style={{ color: "white" , background: "#000000", borderRadius: "8px", paddingInline: "1rem" }}
                       >
                         Login
                       </Nav.Link>
