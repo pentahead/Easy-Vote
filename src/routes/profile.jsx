@@ -24,15 +24,15 @@ const Profile = () => {
 
   <div className="container" style={{ width: "100vh",height: "100vh",marginTop:"10vh", justifyContent: "center", display: "flex" }}>
     <Card style={{ width: "50%", height: "50%", borderRadius: "20px", display: "flex", justifyContent: "center", alignItems: "center"  }}>
-      <h2>NAMA</h2>
-        <div style={{width: "90%", height: "15%", borderRadius: "20px", display: "flex", justifyContent: "center", alignItems: "center", alignContent: "center",border: "1px solid black", margin:"5%"}}>
-          <h3>
+      <h1>NAMA</h1>
+        <div style={{width: "90%", height: "15%", borderRadius: "20px", display: "flex", justifyContent: "center", alignItems: "center", alignContent: "center",border: "1px solid black", margin:"5%", padding:"5%"}}>
+          <p style={{fontSize:"90%",fontWeight:"bold", alignContent:"center", justifyContent:"center", margin:"0"}}>
             NUR BASHORI RAHMAT NUR 
-          </h3>  
+          </p>  
         </div>
       <h2>NIM</h2>
-        <div style={{width: "90%", height: "15%", borderRadius: "20px", display: "flex", justifyContent: "center", alignItems: "center", alignContent: "center",border: "1px solid black", margin:"5%"}}>
-          <h3>KOntol</h3>
+        <div style={{width: "90%", height: "15%", borderRadius: "20px", display: "flex", justifyContent: "center", alignItems: "center", alignContent: "center",border: "1px solid black", margin:"5%",padding:"5%"}}>
+          <p style={{fontSize:"90%",fontWeight:"bold", alignContent:"center", justifyContent:"center",margin:"0"}}>222410102037</p>
         </div>
     </Card>
   </div>
