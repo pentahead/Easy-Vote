@@ -3,25 +3,25 @@ import { Container, Row, Col } from "react-bootstrap";
 const Footer = () => {
   return (
     <>
-      <footer>
-        <Container className="py-1">
-          <Row className="d-flex flex-column flex-lg-row">
+      <footer style={{ background: "#17181a" }}>
+        <Container className="py-1 text-light" >
+          <Row className="d-flex flex-column flex-lg-row mt-4">
             <Col>
               <p>Jl. Kalimantan No.37, Kabupaten Jember, Jawa Timur 68121</p>
               <p>easyvotefasilkom@unej.com</p>
               <p>081-233-334-808</p>
             </Col>
-            <Col className="fw-medium">
+            <Col className="fw-medium text-light">
               <a className="nav-link active" href="Candidate">
                 Candidate
               </a>
-              <a className="nav-link text-black" href="Votes">
+              <a className="nav-link " href="Votes">
                 Votes
               </a>
-              <a className="nav-link text-black" href="Statistic">
+              <a className="nav-link " href="Statistic">
                 Statistic
               </a>
-              <a className="nav-link text-black" href="Profile">
+              <a className="nav-link " href="Profile">
                 Profile
               </a>
             </Col>

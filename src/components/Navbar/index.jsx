@@ -67,16 +67,16 @@ const NavigationBar = () => {
     <>
       {["xxl"].map((expand) => (
         <Navbar
-          style={{ background: "#f1f3ff" }}
+          style={{ background: "#ef8f2e" }}
           key={expand}
           expand={expand}
-          className="mb-0 "
+          className="mb-0 shadow "
         >
           <Container>
             <Navbar.Brand
               as="div"
-              onClick={handleBrandClick} // Handle click to navigate based on role
-              style={{ cursor: "pointer", fontWeight:"bold" }}
+              onClick={handleBrandClick}
+              style={{ cursor: "pointer", fontWeight: "bold", color: "white" }}
             >
               EasyVote
             </Navbar.Brand>
@@ -92,17 +92,25 @@ const NavigationBar = () => {
                 </Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
-                <Nav className="justify-content-end flex-grow-1 pe-3 text-black fw-bold">
-                  <Nav.Link as={Link} to="/candidate" >
+                <Nav className="justify-content-end flex-grow-1 pe-3 fw-bold">
+                  <Nav.Link
+                    as={Link}
+                    to="/candidate"
+                    style={{ color: "white" }}
+                  >
                     Candidates
                   </Nav.Link>
-                  <Nav.Link as={Link} to="/vote">
+                  <Nav.Link as={Link} to="/vote" style={{ color: "white" }}>
                     Votes
                   </Nav.Link>
-                  <Nav.Link as={Link} to="/statistic">
+                  <Nav.Link
+                    as={Link}
+                    to="/statistic"
+                    style={{ color: "white" }}
+                  >
                     Statistics
                   </Nav.Link>
-                  <Nav.Link as={Link} to="/profile">
+                  <Nav.Link as={Link} to="/profile" style={{ color: "white" }}>
                     Profile
                   </Nav.Link>
                   {user ? (
@@ -147,7 +155,11 @@ const NavigationBar = () => {
                     </>
                   ) : (
                     <>
-                      <Nav.Link as={Link} to="/login">
+                      <Nav.Link
+                        as={Link}
+                        to="/login"
+                        style={{ color: "white" }}
+                      >
                         Login
                       </Nav.Link>
                     </>

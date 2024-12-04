@@ -29,7 +29,7 @@ const Votes = () => {
   const votingData = [
     {
       id: 1,
-      name: "aa",
+      name: "Faruq",
       image: person,
       label: "A1",
     },
@@ -45,25 +45,13 @@ const Votes = () => {
       image: person_2,
       label: "A3",
     },
-    {
-      id: 4,
-      name: "Azril",
-      image: "https://via.placeholder.com/150",
-      label: "No 4",
-    },
-    {
-      id: 5,
-      name: "Azril",
-      image: "https://via.placeholder.com/150",
-      label: "A5",
-    },
   ];
   return (
-    <div className="Votes py-5">
+    <div className="Votes py-5" style={{ background: "#e7edf0" }}>
       <Container>
         <Row className="justify-content-center mb-4 ">
           <Card className=" p-4 border-0" style={{ background: "#ef8f2e" }}>
-            <h1 className="fw-bold voting-header text-center text-light">
+            <h1 className="fw-bold voting-header text-center text-light " style={{textShadow: "2px 2px 10px  #000000"}}>
               {" "}
               Tentukan Pilihanmu Sekarang!{" "}
             </h1>
@@ -73,7 +61,7 @@ const Votes = () => {
           {votingData.map((candidate) => (
             <Col
               key={candidate.id}
-              md={3}
+              md={4}
               sm={4}
               xs={6}
               className="mb-4 d-flex align-items-stretch"
@@ -90,8 +78,9 @@ const Votes = () => {
                   />
                 </div>
                 <Card.Body className="text-center">
-                  <Card.Title className="m-0">{candidate.label}</Card.Title>
-                  <Card.Text className="fw-bold">{candidate.name}</Card.Text>
+                  <Card.Title className="m-0 fw-bold fs-2">
+                    {candidate.name}
+                  </Card.Title>
                 </Card.Body>
               </Card>
             </Col>
