@@ -62,8 +62,8 @@ const Votes = () => {
               <Row className="justify-content-center d-flex">
                 <Card style={{ width: "80%" }} className=" text-center">
                   <Card.Body>
-                    <Card.Title>Masukkan kode event</Card.Title>
                     <Form onSubmit={onSubmit} className="z-3 p-5">
+                      <h5 className="mb-4">Masukkan kode event</h5>
                       <Form.Group className="mb-3">
                         <Form.Control
                           type="text"
@@ -104,7 +104,6 @@ const Votes = () => {
             </animated.div>
           </>
         ) : (
-     
           <VoteItem />
         )}
       </Container>
