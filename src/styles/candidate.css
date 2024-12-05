@@ -1,0 +1,63 @@
+.Candidates{
+    width: 100%;
+    height: 100vh;
+    }
+
+.container-candidates{
+    width: 100%;
+    height: 100%;
+    color: blueviolet;
+    display:flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.kiwkiw{
+    width: 40vh;
+    border-radius: 1%;
+    align-items: center;
+}
+
+.card-title {
+    font-size: 5vh;
+    font-weight: bold;
+    text-align: center;
+}
+
+.visi{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.table-visi{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.table-visi {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-visi th {
+    padding: 10px;
+    
+}
+
+.header-th {
+    font-weight: bold;
+    text-align: center;
+    font-size: larger;
+}
+
+.content {
+    text-align: left;
+    padding: 5px;
+}
