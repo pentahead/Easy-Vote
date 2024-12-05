@@ -89,9 +89,9 @@ function Login() {
                   value={nim}
                   onChange={(e) => {
                     const value = e.target.value;
-                      if (value >= 0) {
-                        setNim(value);
-                      }
+                    if (value >= 0) {
+                      setNim(value);
+                    }
                   }}
                   required
                 />
@@ -111,8 +111,14 @@ function Login() {
               <Button
                 variant=""
                 type="submit"
-                className="w-100 mt-3 fw-bold"
-                style={{ background: "#ef8f2e", color: "white" }}
+                className="w-100 mb-3 fw-bold text-light"
+                style={{
+                  backgroundColor: "#ef8f2e",
+                  border: "none",
+                  transition: "opacity 0.3s ease",
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.5")}
+                onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
               >
                 Login
               </Button>

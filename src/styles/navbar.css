@@ -9,7 +9,7 @@
 }
 
 .custom-nav-link.active {
-  color: white !important; 
-  font-weight: bold; 
+  color: #a52a2a !important; 
+  font-weight: bolder; 
   background-color: transparent; 
 }

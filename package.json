@@ -10,6 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@emotion/react": "^11.13.5",
+    "@emotion/styled": "^11.13.5",
+    "@mui/material": "^6.1.10",
+    "@mui/x-charts": "^7.23.0",
+    "@react-spring/web": "^9.7.5",
     "@reduxjs/toolkit": "^2.3.0",
     "@tanstack/react-router": "^1.79.0",
     "bootstrap": "^5.3.3",

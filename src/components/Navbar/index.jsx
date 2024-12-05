@@ -160,7 +160,21 @@ const NavigationBar = () => {
                       <Nav.Link
                         as={Link}
                         to="/login"
-                        style={{ color: "white" , background: "#000000", borderRadius: "8px", paddingInline: "1rem" }}
+                        className=" fw-bold text-light"
+                        style={{
+                          background: "black",
+                          border: "none",
+                          transition: "opacity 0.3s ease",
+                          borderRadius: "9px",
+                          paddingInline: "16px",
+                          marginLeft: "8px",
+                        }}
+                        onMouseEnter={(e) =>
+                          (e.currentTarget.style.opacity = "0.5")
+                        }
+                        onMouseLeave={(e) =>
+                          (e.currentTarget.style.opacity = "1")
+                        }
                       >
                         Login
                       </Nav.Link>
