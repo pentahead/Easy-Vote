@@ -1,0 +1,72 @@
+
+
+.container-prof {
+    width: 100%;
+    height: 100%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Information {
+    width: 90%;
+    height: 10%;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5%;
+    margin: 2.5%;
+    background-color: #ef8f2e;
+    color: white;
+    font-size: 3vh; 
+    font-weight: bold;
+    text-align: center; 
+}
+ .Information p{
+    
+    font-weight: bold;
+    align-content: center;
+    justify-Content: center;
+    margin-bottom: 0 
+
+ }
+ 
+ .Pic{
+    width:  40%; 
+    height:  40%;
+    border-radius:  20px;
+    padding: 5%  
+ }
+
+.Title{
+color: white;
+font-size: 5vh;
+font-weight: bold ;
+align-content: center ;
+justify-content: center ;
+margin: 0
+ }
+  
+ .Card {
+   width:  30% ;
+   height:  50% ;
+   border-Radius:  20px;
+   display:  flex;
+   justify-Content:  center ;
+   align-Items:  center; 
+   margin: 5% 
+ }
+
+ .Rectangle {
+   width:  100% ;
+   height:  100% ;
+   border-Radius:  20px;
+   background-color: #ef8f2e;
+   display:  flex;
+   justify-Content:  center ;
+   align-Items:  center  
+ }
+ 
