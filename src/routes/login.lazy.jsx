@@ -11,6 +11,8 @@ import { login } from "../service/auth";
 import { Container } from "react-bootstrap";
 import { pulse } from "react-animations";
 import styled, { keyframes } from "styled-components";
+import { IoArrowBack } from "react-icons/io5";
+
 
 export const Route = createLazyFileRoute("/login")({
   component: Login,
@@ -62,6 +64,10 @@ function Login() {
     animation: ${PulseAnimation} 2s infinite; /* 2s durasi animasi, infinite berarti terus berulang */
   `;
 
+  const handleBack = () => {
+    navigate({ to: "/" });
+  };
+
   return (
     <section className="d-flex z-1 bg-light  justify-content-center align-items-center vh-100 bg-login position-relative overflow-hidden">
       <Container>
@@ -76,6 +82,14 @@ function Login() {
             }}
             className="bg-trasnparent rounded-4 shadow-lg p-4 position-relative"
           >
+             <IoArrowBack
+          onClick={handleBack}
+          style={{
+            cursor: "pointer",
+            fontSize: "1.5rem",
+            marginRight: "20px",
+          }}
+        />
             <div className="text-center mt-4">
               <h2 className="fw-bold">Login</h2>
             </div>
