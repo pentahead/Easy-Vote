@@ -1,5 +1,5 @@
 export const login = async (request) => {
-  const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/login`, {
+  const response = await fetch(`${import.meta.env.VITE_API_URL}/api/login`, {
     body: JSON.stringify(request),
     method: "POST",
     headers: {
@@ -7,7 +7,6 @@ export const login = async (request) => {
     },
   });
 
-  // get the data if fetching succeed!
   const result = await response.json();
   return result;
 };
@@ -36,7 +35,7 @@ export const profile = async () => {
   const token = localStorage.getItem("token");
   const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/profile`, {
     headers: {
-      authorization: `Bearer ${token}`,
+      authorization: `${token}`,
     },
     method: "GET",
   });

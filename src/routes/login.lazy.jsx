@@ -7,11 +7,12 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import { useDispatch, useSelector } from "react-redux";
 import { setToken, setUser } from "../redux/slices/auth"; // Import setUser action
-import { login } from "../service/auth";
 import { Container } from "react-bootstrap";
 import { pulse } from "react-animations";
 import styled, { keyframes } from "styled-components";
 import { IoArrowBack } from "react-icons/io5";
+import { login } from "../service/auth";
+import toast, { Toaster } from "react-hot-toast";
 
 export const Route = createLazyFileRoute("/login")({
   component: Login,
@@ -30,7 +31,7 @@ function Login() {
     // Redirect based on role_id if token and user exist
     if (token && user) {
       if (user.role_id === 1) {
-        navigate({ to: "/dashboard" });
+        navigate({ to: "/" });
       } else if (user.role_id === 2) {
         navigate({ to: "/" });
       }
@@ -47,14 +48,15 @@ function Login() {
 
     const result = await login(body);
 
-    if (result.success) {
-      const user = result.data.user; // Get user data, including role_id
+    if (result) {
+      const user = result?.user;
 
-      // Save the token and user in Redux state
-      dispatch(setToken(result.data.token));
-      dispatch(setUser(user)); // Store user with role_id
+      dispatch(setToken(result?.token));
+      dispatch(setUser(user));
+      toast.success(result?.message);
+      navigate({ to: "/" });
     } else {
-      alert(result.message); // Show error if login fails
+      toast.success(result.message);
     }
   };
 
@@ -70,6 +72,7 @@ function Login() {
   return (
     <section className="d-flex z-1 bg-light  justify-content-center align-items-center vh-100 bg-login position-relative overflow-hidden">
       <Container>
+        <Toaster position="top-right" reverseOrder={false} />
         <Row className="justify-content-center position-relative">
           <Col
             md={6}

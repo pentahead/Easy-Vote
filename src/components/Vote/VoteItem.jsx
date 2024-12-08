@@ -19,8 +19,10 @@ import person from "../../assets/person.png";
 import person_1 from "../../assets/person_1.png";
 import person_2 from "../../assets/person_2.png";
 // import person_3 from "../assets/person_3.png";
+import { candidateByEvent  } from "../../service/event";
+import { vote  } from "../../service/vote";
 
-const VoteItem = () => {
+const VoteItem = (eventDetails) => {
   const handleVote = (candidate) => {
     Swal.fire({
       title: `Konfirmasi Pilihan`,
@@ -31,14 +33,36 @@ const VoteItem = () => {
       cancelButtonColor: "#cfcccc",
       confirmButtonText: "Ya, pilih!",
       cancelButtonText: "Batal",
-    }).then((result) => {
+    }).then(async (result) => {
       if (result.isConfirmed) {
-        Swal.fire({
-          title: "Terima Kasih!",
-          text: `Pilihan Anda untuk ${candidate.name} (${candidate.label}) telah diterima.`,
-          icon: "success",
-          confirmButtonColor: "#ef8f2e",
-        });
+        try {
+         
+          const response = await vote({
+            code: eventDetails, 
+            candidate_id: candidate.id, 
+          });
+
+          if (response.success) {
+            Swal.fire({
+              title: "Terima Kasih!",
+              text: `Pilihan Anda untuk ${candidate.name} (${candidate.label}) telah diterima.`,
+              icon: "success",
+              confirmButtonColor: "#ef8f2e",
+            });
+          } else {
+            Swal.fire({
+              title: "Gagal",
+              text: "Terjadi kesalahan, coba lagi nanti.",
+              icon: "error",
+            });
+          }
+        } catch (error) {
+          Swal.fire({
+            title: "Gagal",
+            text: "Terjadi kesalahan, coba lagi nanti.",
+            icon: "error",
+          });
+        }
       }
     });
   };
