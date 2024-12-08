@@ -13,7 +13,6 @@ import { pulse } from "react-animations";
 import styled, { keyframes } from "styled-components";
 import { IoArrowBack } from "react-icons/io5";
 
-
 export const Route = createLazyFileRoute("/login")({
   component: Login,
 });
@@ -82,14 +81,14 @@ function Login() {
             }}
             className="bg-trasnparent rounded-4 shadow-lg p-4 position-relative"
           >
-             <IoArrowBack
-          onClick={handleBack}
-          style={{
-            cursor: "pointer",
-            fontSize: "1.5rem",
-            marginRight: "20px",
-          }}
-        />
+            <IoArrowBack
+              onClick={handleBack}
+              style={{
+                cursor: "pointer",
+                fontSize: "1.5rem",
+                marginRight: "20px",
+              }}
+            />
             <div className="text-center mt-4">
               <h2 className="fw-bold">Login</h2>
             </div>

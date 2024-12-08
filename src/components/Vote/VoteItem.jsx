@@ -52,13 +52,13 @@ const VoteItem = () => {
     },
     {
       id: 2,
-      name: "aa",
+      name: "Fawait",
       image: person_1,
       label: "A2",
     },
     {
       id: 3,
-      name: "aa",
+      name: "Zai",
       image: person_2,
       label: "A3",
     },

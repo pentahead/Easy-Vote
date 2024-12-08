@@ -17,24 +17,48 @@ import {
 import NavigationBar from "../components/Navbar";
 import Footer from "../components/Footer";
 import "../styles/vote.css";
-import VoteItem from "../components/Vote/VoteItem";
+import CodesItem from "../components/Vote/CodeItem";
 import { useSpring, animated } from "@react-spring/web";
+import pemilu_1 from "../assets/pemilu-1.png";
+import pemilu_2 from "../assets/pemilu-2.png";
+import pemilu_3 from "../assets/pemilu-3.png";
+import pemilu_4 from "../assets/pemilu-4.png";
 
 export const Route = createFileRoute("/vote")({
   component: Index,
 });
 
-const Votes = () => {
-  const [code, setCode] = useState("");
-  const [voteComponent, setVoteComponent] = useState(false);
+const Events = () => {
+  const [selectedEvent, setSelectedEvent] = useState(false);
 
-  const onSubmit = async (event) => {
-    event.preventDefault();
-
-    const body = {
-      code,
-    };
-    setVoteComponent(true);
+  const enventData = [
+    {
+      id: 1,
+      name: "Pemilu BEM",
+      image: pemilu_1,
+      label: "A1",
+    },
+    {
+      id: 2,
+      name: "Pemilu HIMATIF",
+      image: pemilu_2,
+      label: "A2",
+    },
+    {
+      id: 3,
+      name: "Pemilu HMIF",
+      image: pemilu_3,
+      label: "A3",
+    },
+    {
+      id: 4,
+      name: "Pemilu HIMASIF",
+      image: pemilu_4,
+      label: "A3",
+    },
+  ];
+  const handleEventSubmit = async () => {
+    setSelectedEvent(true);
   };
 
   const formAnimation = useSpring({
@@ -45,66 +69,63 @@ const Votes = () => {
   return (
     <div className="Votes py-5" style={{ background: "#e7edf0" }}>
       <Container>
-        <Row className="justify-content-center mb-4 ">
-          <Card className=" p-4 border-0" style={{ background: "#000000" }}>
-            <h1
-              className="fw-bold voting-header text-center text-light "
-              style={{ textShadow: "2px 2px 10px  #000000" }}
-            >
-              {" "}
-              Tentukan Pilihanmu Sekarang!{" "}
-            </h1>
-          </Card>
-        </Row>
-        {!voteComponent ? (
+        {!selectedEvent ? (
           <>
+            <Row className="justify-content-center mb-4 ">
+              <Card className=" p-4 border-0" style={{ background: "#000000" }}>
+                <h1
+                  className="fw-bold voting-header text-center text-light "
+                  style={{ textShadow: "2px 2px 10px  #000000" }}
+                >
+                  {" "}
+                  Pilih Event Voting{" "}
+                </h1>
+              </Card>
+            </Row>
+
             <animated.div style={formAnimation}>
               <Row className="justify-content-center d-flex">
                 <Card style={{ width: "80%" }} className=" text-center">
                   <Card.Body>
-                    <Form onSubmit={onSubmit} className="z-3 p-5">
-                      <h5 className="mb-4">Masukkan kode event</h5>
-                      <Form.Group className="mb-3">
-                        <Form.Control
-                          type="text"
-                          placeholder="Masukkan kode"
-                          value={code}
-                          onChange={(e) => {
-                            const value = e.target.value;
-                            if (value >= 0) {
-                              setCode(value);
-                            }
-                          }}
-                          required
-                        />
-                      </Form.Group>
-
-                      <Button
-                        variant=""
-                        type="submit"
-                        className="w-100 mb-3 fw-bold text-light"
-                        style={{
-                          backgroundColor: "#ef8f2e",
-                          border: "none",
-                          transition: "opacity 0.3s ease",
-                        }}
-                        onMouseEnter={(e) =>
-                          (e.currentTarget.style.opacity = "0.5")
-                        }
-                        onMouseLeave={(e) =>
-                          (e.currentTarget.style.opacity = "1")
-                        }
-                      >
-                        Kirim Kode
-                      </Button>
-                    </Form>
+                    <animated.div style={formAnimation}>
+                      <Row className="justify-content-center">
+                        {enventData.map((event) => (
+                          <Col
+                            key={event.id}
+                            md={4}
+                            sm={4}
+                            xs={6}
+                            className="mb-4 d-flex align-items-stretch"
+                          >
+                            <Card
+                              className="voting-card shadow-lg"
+                              style={{ cursor: "pointer" }}
+                              onClick={handleEventSubmit}
+                            >
+                              <div className="image-wrapper">
+                                <Card.Img
+                                  variant="top"
+                                  src={event.image}
+                                  alt={event.name}
+                                />
+                              </div>
+                              <Card.Body className="text-center">
+                                <Card.Title className="m-0 fw-bold fs-2">
+                                  {event.name}
+                                </Card.Title>
+                              </Card.Body>
+                            </Card>
+                          </Col>
+                        ))}
+                      </Row>
+                    </animated.div>
                   </Card.Body>
                 </Card>
               </Row>
             </animated.div>
           </>
         ) : (
-          <VoteItem />
+          <CodesItem onBack={() => setSelectedEvent(false)} />
         )}
       </Container>
     </div>
@@ -115,7 +136,7 @@ function Index() {
   return (
     <>
       <NavigationBar />
-      <Votes />
+      <Events />
       <Footer />
     </>
   );
