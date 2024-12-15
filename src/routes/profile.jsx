@@ -1,30 +1,34 @@
 /* eslint-disable no-unused-vars */
 import { createFileRoute, Link } from "@tanstack/react-router";
-import {
-  Button,
-  Container,
-  Carousel,
-  Row,
-  Col,
-  ListGroup,
-  Card,
-  Accordion,
-  DropdownButton,
-  Navbar,
-} from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import NavigationBar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Pic from "../assets/user.png";
 import "../styles/profile.css";
 import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { useNavigate } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/profile")({
   component: Index,
 });
 
 const Profile = () => {
-  const { user } = useSelector((state) => state.auth);
+  const { user, token } = useSelector((state) => state.auth);
+  const [localUser, setLocalUser] = useState(null);
+  const navigate = useNavigate();
 
+  useEffect(() => {
+    if (!token) {
+      navigate({ to: "/login" });
+    } else {
+      setLocalUser(user);
+    }
+  }, [navigate, token, user]);
+
+  if (!user) {
+    navigate({ to: "/login" });
+  }
   return (
     <div className="Profile ">
       <div className="container-prof">

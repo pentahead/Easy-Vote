@@ -7,6 +7,8 @@ import Footer from "../components/Footer";
 import "../styles/vote.css";
 import CodesItem from "../components/Vote/CodeItem";
 import { useSpring, animated } from "@react-spring/web";
+import { useSelector } from "react-redux";
+import { useNavigate } from "@tanstack/react-router";
 import pemilu_1 from "../assets/pemilu-1.png";
 import pemilu_2 from "../assets/pemilu-2.png";
 import pemilu_3 from "../assets/pemilu-3.png";
@@ -18,9 +20,17 @@ export const Route = createFileRoute("/vote")({
 });
 
 const Events = () => {
+  const { user, token } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
   const [selectedEvent, setSelectedEvent] = useState(false);
   const [eventData, setEventData] = useState([]);
   const [selectedCode, setSelectedCode] = useState(null);
+
+  useEffect(() => {
+    if (!token) {
+      navigate({ to: "/login" });
+    }
+  }, [navigate, token]);
 
   useEffect(() => {
     const fetchEventData = async () => {

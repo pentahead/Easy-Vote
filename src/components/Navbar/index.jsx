@@ -8,13 +8,13 @@ import { Link, useNavigate } from "@tanstack/react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { setToken, setUser } from "../../redux/slices/auth";
 import "../../styles/navbar.css";
+import pic from "../../assets/user.png";
 
 const NavigationBar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const { user, token } = useSelector((state) => state.auth);
-
 
   const logout = (event) => {
     event.preventDefault();
@@ -99,7 +99,7 @@ const NavigationBar = () => {
                           bsPrefix="dropdown"
                         >
                           <Image
-                            src={user?.profile_picture}
+                            src={pic}
                             fluid
                             style={{
                               width: "30px",

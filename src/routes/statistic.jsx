@@ -36,9 +36,9 @@ const Statistics = () => {
     setLoading(true);
 
     try {
-      const fetchedData = await statistic(inputCode); 
-      if (fetchedData) {
-        setDataChart(fetchedData); 
+      const fetchedData = await statistic(inputCode);
+      if (fetchedData.length > 0) {
+        setDataChart(fetchedData);
         Swal.fire("Success", "Data berhasil dimuat", "success");
       } else {
         Swal.fire("Error", "Kode event tidak ditemukan", "error");
@@ -133,14 +133,13 @@ const Statistics = () => {
               style={{ gap: "20px" }}
             >
               <div style={{ flex: 2, minWidth: "300px" }}>
-               
                 <PieChart
                   series={[
                     {
                       data: chartData.map((item) => ({
-                        value: item.vote_count, 
+                        value: item.vote_count,
                         color: item.color,
-                        name: item.name || `Option ${item.id}`, 
+                        name: item.name || `Option ${item.id}`,
                       })),
                       innerRadius: 60,
                     },
