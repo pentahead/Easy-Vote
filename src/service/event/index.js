@@ -20,8 +20,7 @@ export const eventByCode = async (code) => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-      authorization: `${token}`,
-
+        authorization: `${token}`,
       },
     }
   );
@@ -29,16 +28,17 @@ export const eventByCode = async (code) => {
   const result = await response.json();
   return result;
 };
-export const candidateByEvent = async (code) => {
+
+export const candidateByEvent = async (inputCode) => {
+  const code = inputCode.inputCode;
   const token = localStorage.getItem("token");
   const response = await fetch(
-    `${import.meta.env.VITE_API_URL}/api/event/${code}/candidate`,
+    `${import.meta.env.VITE_API_URL}/api/event/${code}/candidates`,
     {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-      authorization: `${token}`,
-
+        authorization: `${token}`,
       },
     }
   );

@@ -1,28 +1,16 @@
-import React from "react";
-import {
-  Button,
-  Container,
-  Carousel,
-  Row,
-  Col,
-  ListGroup,
-  Card,
-  Accordion,
-  DropdownButton,
-  Navbar,
-} from "react-bootstrap";
+import { Row, Col, Card } from "react-bootstrap";
 import Swal from "sweetalert2";
 import "../../styles/vote.css";
 import { useSpring, animated } from "@react-spring/web";
+import React, { useEffect, useState } from "react";
+import { candidateByEvent } from "../../service/event";
+import { vote } from "../../service/vote";
+import { useNavigate } from "@tanstack/react-router";
 
-import person from "../../assets/person.png";
-import person_1 from "../../assets/person_1.png";
-import person_2 from "../../assets/person_2.png";
-// import person_3 from "../assets/person_3.png";
-import { candidateByEvent  } from "../../service/event";
-import { vote  } from "../../service/vote";
+const VoteItem = (inputCode) => {
+  const navigate = useNavigate();
+  const [votingData, setvotingData] = useState([]);
 
-const VoteItem = (eventDetails) => {
   const handleVote = (candidate) => {
     Swal.fire({
       title: `Konfirmasi Pilihan`,
@@ -36,18 +24,19 @@ const VoteItem = (eventDetails) => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-         
-          const response = await vote({
-            code: eventDetails, 
-            candidate_id: candidate.id, 
-          });
-
-          if (response.success) {
+          const request = {
+            code: inputCode.inputCode,
+            candidate_id: candidate.id,
+          };
+          const response = await vote(request);
+          if (response.message) {
             Swal.fire({
               title: "Terima Kasih!",
               text: `Pilihan Anda untuk ${candidate.name} (${candidate.label}) telah diterima.`,
               icon: "success",
               confirmButtonColor: "#ef8f2e",
+            }).then(() => {
+              navigate({ to: "/" });
             });
           } else {
             Swal.fire({
@@ -67,26 +56,29 @@ const VoteItem = (eventDetails) => {
     });
   };
 
-  const votingData = [
-    {
-      id: 1,
-      name: "Faruq",
-      image: person,
-      label: "A1",
-    },
-    {
-      id: 2,
-      name: "Fawait",
-      image: person_1,
-      label: "A2",
-    },
-    {
-      id: 3,
-      name: "Zai",
-      image: person_2,
-      label: "A3",
-    },
-  ];
+  useEffect(() => {
+    const fetchvotingData = async () => {
+      try {
+        if (inputCode) {
+          const data = await candidateByEvent(inputCode);
+          const formattedData = data.map((candidate, index) => ({
+            id: index + 1,
+            name: candidate.name,
+            label: `Nomor Urut ${candidate.nomor_urut}`,
+            // image: `https://via.placeholder.com/150?text=${candidate.name}`,
+            visi: candidate.visi,
+            misi: candidate.misi,
+          }));
+          setvotingData(formattedData);
+        }
+      } catch (error) {
+        console.error("Gagal mengambil data kandidat:", error);
+      }
+    };
+
+    fetchvotingData();
+  }, [inputCode]);
+
   const formAnimation = useSpring({
     from: { opacity: 0, transform: "translateY(50px)" },
     to: { opacity: 1, transform: "translateY(0px)" },
@@ -119,6 +111,13 @@ const VoteItem = (eventDetails) => {
                 <Card.Title className="m-0 fw-bold fs-2">
                   {candidate.name}
                 </Card.Title>
+                <Card.Text className="text-muted">{candidate.label}</Card.Text>
+                <Card.Text>
+                  <strong>Visi:</strong> {candidate.visi}
+                </Card.Text>
+                <Card.Text>
+                  <strong>Misi:</strong> {candidate.misi}
+                </Card.Text>
               </Card.Body>
             </Card>
           </Col>

@@ -1,10 +1,14 @@
-export const vote = async (code, candidate_id) => {
+export const vote = async (request) => {
+  const code = request.code;
+  const candidate_id = request.candidate_id;
   const token = localStorage.getItem("token");
-  let url = `${import.meta.env.VITE_API_URL}event/${code}}/vote/${candidate_id}}`;
-
+  const url = `${import.meta.env.VITE_API_URL}/api/event/${code}/vote/${candidate_id}`;
   const response = await fetch(url, {
     method: "POST",
-    authorization: `${token}`,
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `${token}`,
+    },
   });
 
   const result = await response.json();

@@ -1,19 +1,7 @@
 /* eslint-disable no-unused-vars */
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import React, { useEffect, useState } from "react";
-import {
-  Button,
-  Container,
-  Carousel,
-  Row,
-  Col,
-  ListGroup,
-  Card,
-  Accordion,
-  DropdownButton,
-  Navbar,
-  Form,
-} from "react-bootstrap";
+import { Container, Row, Col, Card } from "react-bootstrap";
 import NavigationBar from "../components/Navbar";
 import Footer from "../components/Footer";
 import "../styles/vote.css";
@@ -102,7 +90,9 @@ const Events = () => {
                                 <Card.Title className="m-0 fw-bold fs-2">
                                   {event.name}
                                 </Card.Title>
-                                <Card.Text className="mt-3">{event.description}</Card.Text>
+                                <Card.Text className="mt-3">
+                                  {event.description}
+                                </Card.Text>
                               </Card.Body>
                             </Card>
                           </Col>

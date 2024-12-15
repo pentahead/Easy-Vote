@@ -62,7 +62,7 @@ function Login() {
 
   const PulseAnimation = keyframes`${pulse}`;
   const AnimatedImage = styled.img`
-    animation: ${PulseAnimation} 2s infinite; /* 2s durasi animasi, infinite berarti terus berulang */
+    animation: ${PulseAnimation} 2s infinite; 
   `;
 
   const handleBack = () => {

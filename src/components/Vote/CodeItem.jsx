@@ -14,7 +14,6 @@ const CodesItem = ({ code, onBack }) => {
   const [loading, setLoading] = useState(false);
 
   const onSubmit = async (event) => {
-    console.log(code);
     event.preventDefault();
     setLoading(true);
 
@@ -27,8 +26,6 @@ const CodesItem = ({ code, onBack }) => {
       const data = await eventByCode(inputCode);
       if (data?.start_date) {
         setEventDetails(data);
-        console.log(eventDetails);
-        console.log(data);
         setVoteComponent(true);
       } else {
         Swal.fire("Error", "Kode event tidak ditemukan", "error");
@@ -117,7 +114,7 @@ const CodesItem = ({ code, onBack }) => {
           </>
         ) : (
           <VoteItem
-            eventDetails={eventDetails}
+            inputCode={inputCode}
             onBack={() => setVoteComponent(false)}
           />
         )}
