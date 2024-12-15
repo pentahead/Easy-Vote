@@ -50,7 +50,13 @@ const NavigationBar = () => {
               onClick={handleBrandClick}
               style={{ cursor: "pointer", fontWeight: "bold", color: "white" }}
             >
-              EasyVote
+              <img
+                src="../src/assets/blockchain.png"
+                width="88"
+                height="28"
+                className="d-inline-block align-center"
+                alt="easy vote logo"
+              />
             </Navbar.Brand>
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
             <Navbar.Offcanvas

@@ -65,7 +65,8 @@ const VoteItem = (inputCode) => {
             id: index + 1,
             name: candidate.name,
             label: `Nomor Urut ${candidate.nomor_urut}`,
-            // image: `https://via.placeholder.com/150?text=${candidate.name}`,
+            image: `${candidate.profile_picture}`,
+            // image: `/img/person_2.png`,
             visi: candidate.visi,
             misi: candidate.misi,
           }));
