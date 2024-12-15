@@ -16,36 +16,35 @@ import NavigationBar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Pic from "../assets/user.png";
 import "../styles/profile.css";
+import { useSelector } from "react-redux";
+
 export const Route = createFileRoute("/profile")({
   component: Index,
 });
 
 const Profile = () => {
-  return <div className="Profile ">
+  const { user } = useSelector((state) => state.auth);
 
-
-  <div className="container-prof" >
-    <Card className="Card" >
-      <div className="Rectangle">
-      <p className="Title">
-      PROFILE
-      </p>
+  return (
+    <div className="Profile ">
+      <div className="container-prof">
+        <Card className="Card">
+          <div className="Rectangle">
+            <p className="Title">PROFILE</p>
+          </div>
+          <img src={Pic} alt="user" className="Pic" />
+          <h2>NAMA</h2>
+          <div className="Information">
+            <p>{user.name}</p>
+          </div>
+          <h2>NIM</h2>
+          <div className="Information">
+            <p>{user.nim}</p>
+          </div>
+        </Card>
       </div>
-      <img src={Pic} alt="user" className="Pic" />
-      <h2>NAMA</h2>
-        <div className="Information" >
-          <p >
-            BUZZ LIGHYEAR
-          </p>  
-        </div>
-      <h2>NIM</h2>
-        <div className="Information" >
-          <p >222410102037</p>
-        </div>
-    </Card>
-  </div>
-  </div>;
-  
+    </div>
+  );
 };
 
 function Index() {
